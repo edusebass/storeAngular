@@ -1,0 +1,9 @@
+<p>wave-audio works!</p>
+
+<div>
+  <div #wave></div>
+  <button class="bg-red-300 text-8xl" (click)="playPause()">
+    <SPAn *ngIf="isPlayin(); else elseBlock">Play</SPAn>
+    <ng-template #elseBlock>opause</ng-template>
+  </button>
+</div>
