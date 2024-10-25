@@ -17,9 +17,9 @@ export class ProductComponent {
 
   addToCartHandler() {
     console.log('click from child');
-    this.addToCart
-      .emit
+    this.addToCart.emit(
       // 'holi esto es un mdg desde el hijo pi.assaasasd' + this.title,
-      ();
+      this.product,
+    );
   }
 }

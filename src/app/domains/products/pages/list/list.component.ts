@@ -1,32 +1,35 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductComponent } from './../../components/product/product.component';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../shared/models/product.model';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, ProductComponent],
+  imports: [CommonModule, ProductComponent, HeaderComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
 export class ListComponent {
   products = signal<Product[]>([]);
+  private cartService = inject(CartService);
+  private productService = inject(ProductService);
 
-  constructor() {
-    const initProducts: Product[] = [
-      {
-        id: Date.now(),
-        title: 'Product 1',
-        price: 100,
-        img: 'https://picsum.photos/100/100?r=2',
-        creationAt: new Date().toISOString(),
+  ngOnInit() {
+    this.productService.getProduct().subscribe({
+      next: (products) => {
+        this.products.set(products);
       },
-    ];
-    this.products.set(initProducts);
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
-  fromChild(event: string) {
-    console.log(event);
-    console.log('des list compnent');
+
+  addToCart(event: Product) {
+    this.cartService.addToCart(event);
   }
 }
