@@ -19,9 +19,4 @@ export class ProductService {
   getOne(id: string) {
     return this.http.get<Product>(`https://fakestoreapi.com/products/${id}`);
   }
-
-  getProductsByCategory(category: string): Observable<any> {
-    console.log(this.http.get<any>(`${this.apiUrl}/${category})`));
-    return this.http.get<any>(`${this.apiUrl}/${category}`);
-  }
 }
