@@ -42,10 +42,6 @@ export class ListComponent {
         console.log(error);
       },
     });
-
-    this.productService.getProductsByCategory('jewelery').subscribe((data) => {
-      this.products = data;
-    });
   }
 
   addToCart(event: Product) {
