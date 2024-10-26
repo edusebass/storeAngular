@@ -2,8 +2,11 @@
 <div class="flex space-x-4">
   <div>
     <ul>
-      <li>
-        <a href="">{{ categories() }}</a>
+      <li
+        *ngFor="let category of categoriesFinal"
+        class="pt-4 px-5 font-semibold"
+      >
+        <a [routerLink]="['/category', category]">{{ category | titlecase }}</a>
       </li>
     </ul>
   </div>

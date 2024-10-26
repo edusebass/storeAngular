@@ -6,11 +6,12 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 import { CartService } from '../../../shared/services/cart.service';
 import { ProductService } from '../../../shared/services/product.service';
 import { CategoryService } from '../../../shared/services/category.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, ProductComponent, HeaderComponent],
+  imports: [CommonModule, ProductComponent, HeaderComponent, RouterLink],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
@@ -46,5 +47,16 @@ export class ListComponent {
 
   addToCart(event: Product) {
     this.cartService.addToCart(event);
+  }
+
+  categoriesFinal = [
+    'electronics',
+    'jewelery',
+    "men's clothing",
+    "women's clothing",
+  ];
+
+  categoriesFinalFunction() {
+    return this.categoriesFinal;
   }
 }
