@@ -17,7 +17,6 @@ import { RouterLink } from '@angular/router';
 })
 export class ListComponent {
   products = signal<Product[]>([]);
-  // In your ListComponent
   categories = signal<Object>({});
   categoriesArray = computed(() => Object.values(this.categories()));
   private cartService = inject(CartService);
@@ -42,6 +41,10 @@ export class ListComponent {
       error: (error) => {
         console.log(error);
       },
+    });
+
+    this.productService.getProductsByCategory('jewelery').subscribe((data) => {
+      this.products = data;
     });
   }
 

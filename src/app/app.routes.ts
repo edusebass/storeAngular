@@ -4,6 +4,7 @@ import { ListComponent } from './domains/products/pages/list/list.component';
 import { AboutComponent } from './domains/info/pages/about/about.component';
 import { NotFoundComponent } from './domains/info/pages/not-found/not-found.component';
 import { ProductDetailComponent } from './domains/products/pages/product-detail/product-detail.component';
+import { ProductListComponent } from './domains/products/pages/product-list/product-list.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,10 @@ export const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductDetailComponent,
+  },
+  {
+    path: 'category/:category',
+    component: ProductListComponent,
   },
   {
     path: '**',
