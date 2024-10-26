@@ -9,11 +9,12 @@ import {
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, HeaderComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
